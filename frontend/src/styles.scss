@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import './variables.scss'; // defining global styling
+html {
+    background: linear-gradient(to right top, $turqoise, $green);
+}
+
+html,
+body {
+    height: 100%;
+    background: linear-gradient(to right top, $turqoise, $green);
+}
