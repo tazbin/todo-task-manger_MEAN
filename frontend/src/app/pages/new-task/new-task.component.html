@@ -1,0 +1,27 @@
+<div class="centered-content">
+    <div class="list-modal">
+        <h1 class="title">
+            Create a new task
+        </h1>
+
+        <form>
+            <div class="form-row align-items-center mt-4">
+                <div class="col-12">
+                    <label class="sr-only" for="inlineFormInput"></label>
+                    <input type="text" #newTask class="form-control mb-2" id="inlineFormInput" placeholder="Write your task name">
+                </div>
+            </div>
+            <div class="form-row align-items-right mt-1">
+                <div class="col-8">
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-block btn-outline-secondary mb-2" routerLink="/">Cancel</button>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-block btn-primary mb-2" (click)="createTask(newTask.value)">Creat</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>

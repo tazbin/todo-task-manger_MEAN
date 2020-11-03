@@ -1,3 +1,4 @@
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TaskService } from 'src/app/services/task.service';
@@ -9,6 +10,8 @@ import { TaskService } from 'src/app/services/task.service';
 })
 export class TaskViewComponent implements OnInit {
 
+listId: string;
+
   lists: any;
   items: any;
 
@@ -18,9 +21,9 @@ export class TaskViewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     this._route.params.subscribe((params)=>{
-      // console.log(params)
+      // console.log(params.taskId);
+      this.listId = params.taskId;
       this._taskService.getAllItems(params.taskId).subscribe((items)=>{
         this.items = items
       })
@@ -29,8 +32,13 @@ export class TaskViewComponent implements OnInit {
     this._taskService.getAllTasks().subscribe((lists)=>{
       this.lists = lists
     })
+  }
 
-
+  toggleComplete(item: any){
+    this._taskService.toggleItemComplete(this.listId, item)
+    .subscribe((res) => {
+      item.complete = !item.complete
+    })
   }
 
 }

@@ -23,7 +23,7 @@ export class WebRequestService {
    }
 
    patch(url: string, payload: object){
-    return this.http.patch(`${this.API_URL}/${url}`, payload)
+    return this.http.patch(`${this.API_URL}/${url}`, payload, {responseType: 'text'})
   }
 
    delete(url: string){

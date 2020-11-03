@@ -23,13 +23,15 @@
             </h1>
 
             <div class="tasks">
-                <div class="task-item" *ngFor="let item of items">
+                <div class="task-item" *ngFor="let item of items" (click)="toggleComplete(item)" [ngClass]="{ 'completed': item.complete }">
                     {{item.title}}
                 </div>
-                <div class="task-item completed">
-                    This task has to be done
-                </div>
             </div>
+
+            <button class="btn btn-primary circle-btn" routerLink="new-task">
+                <p>+</p>
+            </button>
+
         </div>
 
     </div>
