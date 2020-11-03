@@ -7,21 +7,12 @@
             </h1>
 
             <div class="list-menu">
-                <a href="" class="list-menu-items is-active">
-                    List #1
-                </a>
-                <a href="" class="list-menu-items">
-                    List #1
-                </a>
-                <a href="" class="list-menu-items">
-                    List #1
-                </a>
-                <a href="" class="list-menu-items">
-                    List #1
+                <a class="list-menu-items" *ngFor="let list of lists" [routerLink]="['/tasks/', list._id]" routerLinkActive="is-active">
+                    {{list.title}}
                 </a>
             </div>
 
-            <button class="btn btn-primary btn-block add-item-btn" (click)="createNewItem()">
+            <button class="btn btn-primary btn-block add-item-btn" routerLink="/new-list">
                 + New item
             </button>
         </div>
@@ -32,17 +23,8 @@
             </h1>
 
             <div class="tasks">
-                <div class="task-item">
-                    This task has to be done
-                </div>
-                <div class="task-item">
-                    This task has to be done
-                </div>
-                <div class="task-item">
-                    This task has to be done
-                </div>
-                <div class="task-item">
-                    This task has to be done
+                <div class="task-item" *ngFor="let item of items">
+                    {{item.title}}
                 </div>
                 <div class="task-item completed">
                     This task has to be done

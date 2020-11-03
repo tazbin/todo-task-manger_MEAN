@@ -13,4 +13,12 @@ export class TaskService {
   createList(title: string){
     return this._webRequest.post('lists', {title})
   }
+
+  getAllTasks(){
+    return this._webRequest.get('lists')
+  }
+
+  getAllItems(listId: string){
+    return this._webRequest.get(`lists/${listId}/tasks`)
+  }
 }

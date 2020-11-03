@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { TaskService } from 'src/app/services/task.service';
 
 @Component({
@@ -8,18 +9,28 @@ import { TaskService } from 'src/app/services/task.service';
 })
 export class TaskViewComponent implements OnInit {
 
+  lists: any;
+  items: any;
+
   constructor(
-    private _taskService: TaskService
+    private _taskService: TaskService,
+    private _route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-  }
 
-  createNewItem(){
-    this._taskService.createList('open payoneer account')
-    .subscribe((res: any)=>{
-      console.log(res)
+    this._route.params.subscribe((params)=>{
+      // console.log(params)
+      this._taskService.getAllItems(params.taskId).subscribe((items)=>{
+        this.items = items
+      })
     })
+
+    this._taskService.getAllTasks().subscribe((lists)=>{
+      this.lists = lists
+    })
+
+
   }
 
 }

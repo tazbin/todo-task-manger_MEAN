@@ -10,3 +10,34 @@ body {
     height: 100%;
     background: linear-gradient(to right top, $turqoise, $green);
 }
+
+.centered-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+    color: $green;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.btn-primary {
+    background-color: $green;
+    color: white;
+    border-color: $green;
+    &:hover {
+        background-color: lightseagreen
+    }
+    &:click {
+        background-color: lightseagreen
+    }
+    &:focus {
+        background-color: lightseagreen
+    }
+}
