@@ -22,11 +22,17 @@ listId: string;
 
   ngOnInit(): void {
     this._route.params.subscribe((params)=>{
-      // console.log(params.taskId);
-      this.listId = params.taskId;
-      this._taskService.getAllItems(params.taskId).subscribe((items)=>{
-        this.items = items
-      })
+
+      if(params.taskId){
+        this.listId = params.taskId;
+        this._taskService.getAllItems(params.taskId).subscribe((items)=>{
+          this.items = items
+        })
+      } else{
+        params.taskId = undefined
+      }
+
+
     })
 
     this._taskService.getAllTasks().subscribe((lists)=>{

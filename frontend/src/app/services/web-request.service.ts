@@ -29,4 +29,14 @@ export class WebRequestService {
    delete(url: string){
     return this.http.delete(`${this.API_URL}/${url}`)
   }
+
+  login(email: string, password: string){
+    return this.http.post(`${this.API_URL}/users/login`, {
+      email,
+      password
+    }, {
+      observe: 'response'
+    })
+  }
+  
 }

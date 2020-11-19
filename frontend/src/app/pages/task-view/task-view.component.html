@@ -18,14 +18,28 @@
         </div>
 
         <div class="task-list-container">
-            <h1 class="title has-text-primary">
-                Items
-            </h1>
+            <div *ngIf="items">
+                <h1 class="title has-text-primary">
+                    Items
+                </h1>
 
-            <div class="tasks">
-                <div class="task-item" *ngFor="let item of items" (click)="toggleComplete(item)" [ngClass]="{ 'completed': item.complete }">
-                    {{item.title}}
+                <div *ngIf="items.length < 1">
+                    <h1 class="no-list-text">
+                        No items added in this list yet
+                    </h1>
                 </div>
+
+                <div class="tasks">
+                    <div class="task-item" *ngFor="let item of items" (click)="toggleComplete(item)" [ngClass]="{ 'completed': item.complete }">
+                        {{item.title}}
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="!items">
+                <h1 class="no-list-text">
+                    Select a list to seee items
+                </h1>
             </div>
 
             <button class="btn btn-primary circle-btn" routerLink="new-task">
